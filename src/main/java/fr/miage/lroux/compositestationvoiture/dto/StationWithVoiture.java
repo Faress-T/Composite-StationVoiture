@@ -9,7 +9,7 @@ public class StationWithVoiture extends Station {
     private List<GestionVoiture> voitures;
 
     public StationWithVoiture(Station station, List<GestionVoiture> voitures) {
-        super(station.getId(), station.getPosition(), station.getNbPlaces(), station.getNbPlacesTaken(), station.getNbPlacesFree());
+        super(station.getStationId(), station.getPosition(), station.getNbPlaces(), station.getNbPlacesTaken(), station.getNbPlacesFree());
         this.voitures = voitures;
     }
 

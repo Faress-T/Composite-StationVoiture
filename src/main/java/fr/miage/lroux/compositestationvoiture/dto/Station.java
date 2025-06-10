@@ -3,7 +3,7 @@ package fr.miage.lroux.compositestationvoiture.dto;
 import java.io.Serializable;
 
 public class Station implements Serializable {
-    private long id;
+    private long stationId;
     private String position;
     private int nbPlaces;
     private int nbPlacesTaken;
@@ -12,20 +12,20 @@ public class Station implements Serializable {
     public Station() {
     }
 
-    public Station(long id, String position, int nbPlaces, int nbPlacesTaken, int nbPlacesFree) {
-        this.id = id;
+    public Station(long stationId, String position, int nbPlaces, int nbPlacesTaken, int nbPlacesFree) {
+        this.stationId = stationId;
         this.position = position;
         this.nbPlaces = nbPlaces;
         this.nbPlacesTaken = nbPlacesTaken;
         this.nbPlacesFree = nbPlacesFree;
     }
 
-    public long getId() {
-        return id;
+    public long getStationId() {
+        return stationId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setStationId(long stationId) {
+        this.stationId = stationId;
     }
 
     public String getPosition() {

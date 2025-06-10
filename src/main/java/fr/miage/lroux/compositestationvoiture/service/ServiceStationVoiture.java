@@ -24,15 +24,15 @@ public class ServiceStationVoiture implements RepoStationVoiture {
     }
 
     @Override
-    public StationWithVoiture getStationWithVoiture(long idStation) throws Exception {
+    public StationWithVoiture getStationWithVoiture(long stationId) throws Exception {
         Station station = null;
         try{
-            station = clientStation.getStation(idStation);
+            station = clientStation.getStation(stationId);
         } catch (FeignException.NotFound e){
             throw new Exception();
         }
 
-        List<GestionVoiture> voitures = clientGestionVoiture.getVoitures(station.getId());
+        List<GestionVoiture> voitures = clientGestionVoiture.getVoitures(station.getStationId());
 
         return new StationWithVoiture(station, voitures);
     }
@@ -49,13 +49,12 @@ public class ServiceStationVoiture implements RepoStationVoiture {
         GestionVoiture voiture1 = null;
 
         try {
-            voiture.setStationId(station.getId());
+            voiture.setStationId(station.getStationId());
             voiture1 = clientGestionVoiture.postVoiture(voiture);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return voiture1;
-
     }
 
 
