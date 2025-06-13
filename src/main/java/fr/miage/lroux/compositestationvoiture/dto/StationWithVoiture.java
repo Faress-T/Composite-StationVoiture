@@ -4,8 +4,6 @@ import java.util.List;
 
 public class StationWithVoiture extends Station {
 
-    private GestionVoiture voiture;
-
     private List<GestionVoiture> voitures;
 
     public StationWithVoiture(Station station, List<GestionVoiture> voitures) {
@@ -13,4 +11,15 @@ public class StationWithVoiture extends Station {
         this.voitures = voitures;
     }
 
+    public StationWithVoiture() {
+
+    }
+
+    public List<GestionVoiture> getVoituresByStation() {
+        return voitures;
+    }
+
+    public void setVoitures(List<GestionVoiture> voitures) {
+        this.voitures = voitures;
+    }
 }

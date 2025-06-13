@@ -14,7 +14,7 @@ public class ControllerStationVoiture {
     RepoStationVoiture repoStationVoiture;
 
     @GetMapping("{stationId}")
-    public StationWithVoiture getStationWithVoiture(@PathVariable long stationId) throws Exception {
+    public StationWithVoiture getStationWithVoiture(@PathVariable("stationId") long stationId) throws Exception {
         return repoStationVoiture.getStationWithVoiture(stationId);
     }
 

@@ -32,13 +32,22 @@ public class ServiceStationVoiture implements RepoStationVoiture {
             throw new Exception();
         }
 
-        List<GestionVoiture> voitures = clientGestionVoiture.getVoitures(station.getStationId());
+        List<GestionVoiture> voitures = clientGestionVoiture.getVoituresByStation(station.getStationId());
 
-        return new StationWithVoiture(station, voitures);
+        StationWithVoiture swv = new StationWithVoiture();
+
+        swv.setStationId(station.getStationId());
+        swv.setNbPlaces(station.getNbPlaces());
+        swv.setPosition(station.getPosition());
+        swv.setNbPlacesFree(station.getNbPlacesFree());
+        swv.setNbPlacesTaken(station.getNbPlacesTaken());
+        swv.setVoitures(voitures);
+
+        return swv;
     }
 
     @Override
-    public GestionVoiture createVoiture(long idStation, GestionVoiture voiture) throws Exception{
+    public GestionVoiture createVoiture(long idStation, GestionVoiture optVoiture) throws Exception{
         Station station = null;
         try {
             station = this.clientStation.getStation(idStation);
@@ -46,17 +55,17 @@ public class ServiceStationVoiture implements RepoStationVoiture {
             throw new Exception();
         }
 
-        GestionVoiture voiture1 = null;
+        GestionVoiture voiture = null;
 
         try {
-            voiture.setStationId(station.getStationId());
-            voiture1 = clientGestionVoiture.postVoiture(voiture);
+            optVoiture.setStationId(station.getStationId());
+            voiture = clientGestionVoiture.postVoiture(optVoiture);
+
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return voiture1;
+        return voiture;
     }
-
-
 
 }
