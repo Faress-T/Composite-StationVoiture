@@ -3,7 +3,7 @@ package fr.miage.lroux.compositestationvoiture.dto;
 import java.io.Serializable;
 import java.util.List;
 
-public class GestionVoiture implements Serializable {
+public class Car implements Serializable {
     private long carId;
     private String brand;
     private String model;
@@ -14,9 +14,9 @@ public class GestionVoiture implements Serializable {
     private List<Double> localisation;
     private long stationId;
 
-    public GestionVoiture() {}
+    public Car() {}
 
-    public GestionVoiture(long carId, String brand, String model, double batteryLevel, double kilometresTravelled, int numberOfSeats, boolean used, List<Double> localisation, long stationId) {
+    public Car(long carId, String brand, String model, double batteryLevel, double kilometresTravelled, int numberOfSeats, boolean used, List<Double> localisation, long stationId) {
         this.carId = carId;
         this.brand = brand;
         this.model = model;

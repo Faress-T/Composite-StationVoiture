@@ -1,7 +1,7 @@
 package fr.miage.lroux.compositestationvoiture.controller;
 
-import fr.miage.lroux.compositestationvoiture.dto.GestionVoiture;
-import fr.miage.lroux.compositestationvoiture.dto.StationWithVoiture;
+import fr.miage.lroux.compositestationvoiture.dto.Car;
+import fr.miage.lroux.compositestationvoiture.dto.StationWithCar;
 import fr.miage.lroux.compositestationvoiture.repository.RepoStationVoiture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +14,13 @@ public class ControllerStationVoiture {
     RepoStationVoiture repoStationVoiture;
 
     @GetMapping("{stationId}")
-    public StationWithVoiture getStationWithVoiture(@PathVariable long stationId) throws Exception {
-        return repoStationVoiture.getStationWithVoiture(stationId);
+    public StationWithCar getStationWithVoiture(@PathVariable long stationId) throws Exception {
+        return repoStationVoiture.getStationWithCar(stationId);
     }
 
     @PostMapping("{stationId}")
-    public GestionVoiture createVoiture(@PathVariable("stationId") Long stationId, @RequestBody GestionVoiture voiture) throws Exception {
-        return repoStationVoiture.createVoiture(stationId,voiture);
+    public Car createVoiture(@PathVariable("stationId") Long stationId, @RequestBody Car voiture) throws Exception {
+        return repoStationVoiture.createCar(stationId,voiture);
     }
 
 }

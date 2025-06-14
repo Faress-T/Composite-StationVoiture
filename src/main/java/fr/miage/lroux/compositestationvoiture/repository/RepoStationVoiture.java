@@ -1,12 +1,12 @@
 package fr.miage.lroux.compositestationvoiture.repository;
 
-import fr.miage.lroux.compositestationvoiture.dto.GestionVoiture;
-import fr.miage.lroux.compositestationvoiture.dto.StationWithVoiture;
+import fr.miage.lroux.compositestationvoiture.dto.Car;
+import fr.miage.lroux.compositestationvoiture.dto.StationWithCar;
 
 public interface RepoStationVoiture {
 
-    StationWithVoiture getStationWithVoiture(long idStation) throws Exception;
+    StationWithCar getStationWithCar(long idStation) throws Exception;
 
-    GestionVoiture createVoiture(long idStation, GestionVoiture voiture) throws Exception;
+    Car createCar(long idStation, Car voiture) throws Exception;
 
 }
