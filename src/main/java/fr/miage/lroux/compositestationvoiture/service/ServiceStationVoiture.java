@@ -72,8 +72,9 @@ public class ServiceStationVoiture implements RepoStationVoiture {
 
     public Station createStation(Station station) throws Exception {
         try {
-            historisationClients.postStationHistorisation(station);
-            return clientStation.postStation(station);
+            Station stationAfterCreation = clientStation.postStation(station);
+            historisationClients.postStationHistorisation(stationAfterCreation);
+            return stationAfterCreation;
         } catch (FeignException e) {
             throw new RuntimeException("Failed to create station", e);
         }
