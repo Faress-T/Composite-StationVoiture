@@ -1,6 +1,7 @@
 package fr.miage.lroux.compositestationvoiture.service;
 
 import feign.FeignException;
+import fr.miage.lroux.compositestationvoiture.clients.HistorisationClients;
 import fr.miage.lroux.compositestationvoiture.clients.StationClients;
 import fr.miage.lroux.compositestationvoiture.clients.CarClients;
 import fr.miage.lroux.compositestationvoiture.dto.Car;
@@ -19,11 +20,14 @@ public class ServiceStationVoiture implements RepoStationVoiture {
      */
     private final CarClients carClients;
 
+    private final HistorisationClients historisationClients;
+
     private final StationClients clientStation;
 
-    public ServiceStationVoiture(CarClients carClients, StationClients clientStation1) {
+    public ServiceStationVoiture(CarClients carClients, StationClients clientStation, HistorisationClients historisationClients) {
         this.carClients = carClients;
-        this.clientStation = clientStation1;
+        this.clientStation = clientStation;
+        this.historisationClients = historisationClients;
     }
 
     /**
@@ -61,7 +65,18 @@ public class ServiceStationVoiture implements RepoStationVoiture {
 
         updateCarStationIdOrThrow( carReturn.getCarId(),  idStation);
 
+        historisationClients.postCarHistorisation(carReturn);
+
         return carReturn;
+    }
+
+    public Station createStation(Station station) throws Exception {
+        try {
+            historisationClients.postStationHistorisation(station);
+            return clientStation.postStation(station);
+        } catch (FeignException e) {
+            throw new RuntimeException("Failed to create station", e);
+        }
     }
 
     private Station checkStationExistOrThrow(long stationId) throws Exception {

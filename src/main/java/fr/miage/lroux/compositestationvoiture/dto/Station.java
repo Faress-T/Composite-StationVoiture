@@ -1,10 +1,11 @@
 package fr.miage.lroux.compositestationvoiture.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Station implements Serializable {
     private long stationId;
-    private String position;
+    private List<Double> localisation;
     private int nbPlaces;
     private int nbPlacesTaken;
     private int nbPlacesFree;
@@ -12,9 +13,9 @@ public class Station implements Serializable {
     public Station() {
     }
 
-    public Station(long stationId, String position, int nbPlaces, int nbPlacesTaken, int nbPlacesFree) {
+    public Station(long stationId, List<Double> localisation, int nbPlaces, int nbPlacesTaken, int nbPlacesFree) {
         this.stationId = stationId;
-        this.position = position;
+        this.localisation = localisation;
         this.nbPlaces = nbPlaces;
         this.nbPlacesTaken = nbPlacesTaken;
         this.nbPlacesFree = nbPlacesFree;
@@ -28,12 +29,12 @@ public class Station implements Serializable {
         this.stationId = stationId;
     }
 
-    public String getPosition() {
-        return position;
+    public List<Double> getLocalisation() {
+        return localisation;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setLocalisation(List<Double> localisation) {
+        this.localisation = localisation;
     }
 
     public int getNbPlaces() {

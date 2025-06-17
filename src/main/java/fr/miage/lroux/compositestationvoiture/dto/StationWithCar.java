@@ -7,7 +7,7 @@ public class StationWithCar extends Station {
     private List<Car> voitures;
 
     public StationWithCar(Station station, List<Car> voitures) {
-        super(station.getStationId(), station.getPosition(), station.getNbPlaces(), station.getNbPlacesTaken(), station.getNbPlacesFree());
+        super(station.getStationId(), station.getLocalisation(), station.getNbPlaces(), station.getNbPlacesTaken(), station.getNbPlacesFree());
         this.voitures = voitures;
     }
 
